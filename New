@@ -1,0 +1,62 @@
+import { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
+export default function Portfolio() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+
+  return (
+    <div className="min-h-screen bg-gray-50 p-6 text-gray-800">
+      <header className="flex flex-col items-center mb-12">
+        <img src="/my-photo.jpg" alt="Vijayaa Chinmayi" className="w-40 h-40 rounded-full shadow-md mb-4" />
+        <h1 className="text-4xl font-bold">Vijayaa Chinmayi</h1>
+        <p className="text-lg text-gray-600">Aspiring Developer | Tech Enthusiast</p>
+      </header>
+
+      <section className="mb-10">
+        <h2 className="text-2xl font-semibold mb-4">About Me</h2>
+        <p className="text-gray-700">I'm a passionate learner aiming to create beautiful and functional digital experiences. I love coding, solving problems, and building impactful projects.</p>
+      </section>
+
+      <section className="mb-10">
+        <h2 className="text-2xl font-semibold mb-4">Projects</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <Card className="p-4 shadow-md">
+            <h3 className="text-xl font-semibold">Project One</h3>
+            <p>A brief description of your project goes here.</p>
+          </Card>
+          <Card className="p-4 shadow-md">
+            <h3 className="text-xl font-semibold">Project Two</h3>
+            <p>Another short description about another cool project.</p>
+          </Card>
+        </div>
+      </section>
+
+      <section className="mb-10">
+        <h2 className="text-2xl font-semibold mb-4">Skills</h2>
+        <ul className="list-disc list-inside">
+          <li>HTML, CSS, JavaScript</li>
+          <li>React, Tailwind CSS</li>
+          <li>Git, GitHub</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-semibold mb-4">Contact Me</h2>
+        <form className="grid gap-4 max-w-md">
+          <Input placeholder="Your Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+          <Input placeholder="Email" type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+          <textarea
+            className="border rounded p-2"
+            rows={4}
+            placeholder="Message"
+            value={form.message}
+            onChange={(e) => setForm({ ...form, message: e.target.value })}
+          ></textarea>
+          <Button type="submit">Send Message</Button>
+        </form>
+      </section>
+    </div>
+  );
+}
